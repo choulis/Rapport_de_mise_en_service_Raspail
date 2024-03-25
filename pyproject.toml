@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "rapport-mise-en-service-raspail"
+version = "0.1.0"
+description = ""
+authors = ["rachidWassati <rachid.jeffali@wassati.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = "^1.32.2"
+matplotlib = "^3.8.3"
+pandas = "^2.2.1"
+pdfkit = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
