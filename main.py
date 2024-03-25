@@ -3,7 +3,7 @@ import pandas as pd
 
 import pdfkit
 from datetime import datetime
-config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
+config = pdfkit.configuration(wkhtmltopdf="wkhtmltopdf.exe")
 
 
 st.set_page_config(page_title="Rapport de mise en service",page_icon="🧊")
