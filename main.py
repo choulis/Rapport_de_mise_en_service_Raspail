@@ -40,7 +40,7 @@ if validation_test_pression == "Oui":
 elif validation_test_pression == "Non":
     st.warning("Veuillez tester le circuit à une pression ps+10\% d'une durée de 48h",icon="⚠️")
     
-df_pression = pd.DataFrame({"Circuit":["Bp","Mp","Hp"],"Pression (Bar)":[0,0,0],"Durée(h)":[0,0,0]}).set_index("Circuit")
+df_pression = pd.DataFrame({"Circuit":["Bp","Mp","Hp"],"Pression (Bar)":[0,0,0],"Durée(h)":[0,0,0]})
 df_pression = st.data_editor(df_pression)
 st.info("Si existence d'une soupape sur le circuit, Pt = p(soupape) - 10% p(soupape) = 0.8 p(soupape)",icon="⚠️")
 fuite = st.selectbox("Avez-vous constaté une fuite sur le circuit frigorifique ?", ("Oui", "Non"))
@@ -67,9 +67,10 @@ if validation_schema == "Oui":
         }
         df_compresseur = pd.DataFrame(
         {
-            "Information":["Fabriquement","Modèle","N° de série","Tension (V)","Fréquence (Hz)","couplage(Δ) ou Y", "Intensité plaqué (A)","Intensité règle en GV (A)"],
+            "Information":["Fabriquant","Modèle","N° de série","Tension (V)","Fréquence (Hz)","couplage(Δ) ou Y", "Intensité plaqué (A)","Intensité règle en GV (A)"],
             **dict_compresseurs
-        }).set_index("Information")
+        })
+        
     
         df_compresseur = st.data_editor(df_compresseur)
     except:
@@ -142,7 +143,7 @@ if validation_schema == "Oui":
                         <li>Avez-vous le schéma électrique et le PIB de l'installation ?: {validation_schema}</li>
                     </ul>
                     <h2>Compresseurs</h2>
-                    {df_compresseur.to_html()}
+                    {df_compresseur.style.set_table_styles([{'selector': 'th', 'props': [('border', '1px solid black')]}]).set_properties(**{'text-align': 'center', 'border':'1px solid black'}).render()}
                     <ul>
                         <li>Avez-vous testé la sonde de Kriwan de tous les compresseurs ?: {validation_kriwon}</li>
                         <li>Avez-vous testé les pressostats Bp/Hp de sécurité de chaque CP ?: {validation_pressorstat}</li>
